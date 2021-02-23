@@ -61,7 +61,65 @@
 
 // TODO Votre code ici.
 
+$server = 'localhost';
+$user = 'root';
+$password = '';
+$db = 'table2 test php';
+
 try {
-    ...
+    $maConnexion = new PDO("mysql:host=$server;dbname=$db;charset=utf8", $user, $password);
+    $maConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "
+        CREATE TABLE UTILISATEUR (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+            nom VARCHAR (30) NOT NULL ,
+            prenom VARCHAR (30) NOT NULL ,
+            rue VARCHAR (70) NOT NULL,
+            numero SMALLINT UNSIGNED NOT NULL ,
+            code_postal SMALLINT UNSIGNED NOT NULL ,
+            ville VARCHAR (50) NOT NULL ,
+            pays VARCHAR (50) NOT NULL,
+            mail VARCHAR(100) NOT NULL,
+            date_enregistrement DATETIME DEFAULT CURRENT_TIMESTAMP ,
+            UNIQUE (mail)
+        )
+";
+
+
+    $maConnexion->exec($sql);
+    echo "Les tables sont cree.";
 }
-catch...
+catch (PDOException $exception) {
+    echo $exception->getMessage();
+}
+
+$server = 'localhost';
+$user = 'root';
+$password = '';
+$db = 'table2 test php';
+
+try {
+    $maConnexion = new PDO("mysql:host=$server;dbname=$db;charset=utf8", $user, $password);
+    $maConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+    $sql = "
+        CREATE TABLE PRODUIT (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+            titre VARCHAR (30) NOT NULL ,
+            prix DOUBLE UNSIGNED NOT NULL ,
+            description_courte VARCHAR (255) NOT NULL,
+            description_longue TEXT (300) NOT NULL
+        )
+";
+
+
+
+    $maConnexion->exec($sql);
+    echo "Les tables sont cree.";
+}
+catch (PDOException $exception) {
+    echo $exception->getMessage();
+}
