@@ -71,7 +71,7 @@ try {
     $maConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "
-        CREATE TABLE UTILISATEUR (
+        CREATE TABLE USER (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
             nom VARCHAR (30) NOT NULL ,
             prenom VARCHAR (30) NOT NULL ,
